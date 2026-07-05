@@ -1,0 +1,105 @@
+/* Kita buat label jadi kontainer utama */
+.container-checkbox {
+  display: block;
+  position: relative;
+  padding-left: 35px; /* Kasih ruang di kiri buat kotak */
+  cursor: pointer;
+  font-size: 18px;
+  user-select: none; /* Biar teks gak ikut keseleksi pas diklik */
+}
+
+/* LANGKAH 1: SEMBUNYIKAN KOTAK ASLI */
+/* Kita buat dia transparan tapi tetap bisa diklik */
+.container-checkbox input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* LANGKAH 2: BIKIN KOTAK PALSU (STYLE SESUKA HATI) */
+.kotak-palsu {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee; /* Warna box pas kosong */
+  border-radius: 5px;   /* Bikin kotaknya rada bulat */
+  border: 2px solid #ccc; /* Kasih garis pinggir biar jelas */
+}
+
+/* Efek pas kursor di atas kotak palsu */
+.container-checkbox:hover input ~ .kotak-palsu {
+  background-color: #ddd;
+}
+
+/* LANGKAH 3 & 4: LOGIKA PAS DICENTANG */
+
+/* Warna box berubah pas dicentang (Checked) */
+.container-checkbox input:checked ~ .kotak-palsu {
+  background-color: #2196F3; /* Ganti jadi warna biru */
+  border-color: #2196F3;
+}
+
+/* Bikin tanda centang (✓) - awalnya gak kelihatan */
+.kotak-palsu:after {
+  content: "";
+  position: absolute;
+  display: none; /* Awalnya kita sembunyiin */
+}
+
+/* Munculin tanda centang kalau input dicentang */
+.container-checkbox input:checked ~ .kotak-palsu:after {
+  display: block;
+}
+
+/* Style tanda centangnya (bentuk ✓ pake CSS) */
+.container-checkbox .kotak-palsu:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0; /* Bikin garis ✓ warna putih */
+  transform: rotate(45deg);  /* Putar biar miring pas 45 derajat */
+}
+
+.container-search {
+    display: flex;
+    gap: 8px;
+    
+    /* Trik jitu biar beneran di tengah-tengah header tanpa keganggu tombol menu */
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 4px 0; /* Biar gak nempel ke atas dan bawah */
+    width: 100%;
+    max-width: 400px;
+    max-height: 30px; /* Batasi tinggi maksimal biar gak kemandangan */
+}
+
+/* 4. Styling Input & Button biar cakep */
+.search-input {
+    flex: 1; /* Biar inputnya otomatis ngabisin space di dalam kontainernya */
+    padding: 8px 12px;
+    border: 3px outset #ccc;
+    border-radius: 999px;
+    outline: none;
+    transition: 0.3s ease; /* Biar smooth pas fokus */
+}
+
+.search-button {
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 999px;
+    cursor: pointer;
+}
+
+.search-input:focus {
+    border-color: #007bff;
+    scale: 1.02; /* Biar ada efek zoom dikit pas fokus */
+}
