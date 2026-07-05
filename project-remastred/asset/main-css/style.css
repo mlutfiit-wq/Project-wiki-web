@@ -1,0 +1,24 @@
+:root {
+  --background-color: #FFFFFF;
+  --card:#F8FAFC;
+  --border-line: #242B3D;
+  --text-color:#0F172A;
+  --text-color-sekunder:#64748B;
+  --hover-color:#2563EB;
+}
+body {
+    font-family: var(--font-main);
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6; /* Biar jarak antar baris teks enak dibaca */
+}
+
+a {
+    color: inherit;
+    text-decoration: none; /* Biar semua link gak ada garis bawah standarnya */
+}
+
+.text-center { text-align: center; }
+.flex-center { display: flex; justify-content: center; align-items: center; }
+.mt-20 { margin-top: 20px; }
+.blur-bg { backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
